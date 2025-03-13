@@ -1,0 +1,39 @@
+.central-card {
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    width: 90%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .admin-actions, .user-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .action-card {
+    width: 100%;
+    max-width: 300px;
+    cursor: pointer;
+  }
+  
+  .arrow-icon {
+    float: right;
+  }
+  
+  /
+  @media (max-width: 600px) {
+    .central-card {
+      padding: 10px;
+    }
+  
+    .action-card {
+      width: 100%;
+    }
+  }

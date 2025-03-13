@@ -1,0 +1,26 @@
+<div class="register-container">
+    <h1>Connexion</h1>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div>
+            <label for="login">Login</label>
+            <input id="login" type="text" formControlName="login" />
+            <div class="error" *ngIf="submitted && f['login'].errors?.['required']">
+                Veuillez entrez un login.
+            </div>
+        </div>
+
+        <div>
+            <label for="password">Mot de passe</label>
+            <input id="password" type="password" formControlName="password" />
+            <div class="error" *ngIf="submitted && f['password'].errors?.['required']">
+                Veuillez entrer votre mot de passe.
+            </div>
+        </div>
+        <app-animated-button [text]="'Connexion'" [disabled]="loginForm.invalid" #animatedButton></app-animated-button>
+        <div>
+            <div class="error" *ngIf="submitted && errorMessage ">
+                {{errorMessage}}
+            </div>
+        </div>
+    </form>
+</div>

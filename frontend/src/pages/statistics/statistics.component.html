@@ -1,0 +1,73 @@
+<div class="stats-container">
+    <h1>Statistiques du site</h1>
+    <div class="stats-cards">
+      <mat-card class="stat-card data-card">
+        <mat-card-header>
+          <mat-card-title>Total Utilisateurs</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{ stats?.total_users }}</p>
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="stat-card data-card">
+        <mat-card-header>
+          <mat-card-title>Total Entreprises</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{ stats?.total_companies }}</p>
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="stat-card data-card">
+        <mat-card-header>
+          <mat-card-title>Total Formulaires</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{ stats?.total_forms }}</p>
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="stat-card data-card">
+        <mat-card-header>
+          <mat-card-title>Total Questions</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{ stats?.total_questions }}</p>
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="stat-card data-card">
+        <mat-card-header>
+          <mat-card-title>Total Réponses</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{ stats?.total_answers }}</p>
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="stat-card data-card">
+        <mat-card-header>
+          <mat-card-title>Pourcentage Onboarding Accepté</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-progress-spinner
+            [value]="getAcceptedOnboardingPercentage()"
+            mode="determinate"
+            diameter="100">
+          </mat-progress-spinner>
+          <p>{{ getAcceptedOnboardingPercentage() | number: '1.0-2' }}%</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <mat-card class="stat-card central-card">
+      <mat-card-header>
+        <mat-card-title>Graphiques des Statistiques</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="chart-container">
+          <highcharts-chart
+            [Highcharts]="Highcharts"
+            [options]="chartOptions"
+            [(update)]="updateFlag"
+            style="width: 100%; height: 400px; display: block;">
+          </highcharts-chart>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>

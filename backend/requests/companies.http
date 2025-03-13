@@ -1,0 +1,62 @@
+@baseUrl=http://127.0.0.1:3000
+@admin_token={{ admin.response.body.token }}
+@user_token={{ user.response.body.token }}
+
+### Login with user account
+# @name user
+POST {{ baseUrl }}/auth/login
+Content-Type: application/json
+
+{
+    "login": "user1@example.com",
+    "password": "password"
+}
+
+### Login with admin account
+# @name admin
+POST {{ baseUrl }}/auth/login
+Content-Type: application/json
+
+{
+    "login": "admin@example.com",
+    "password": "password"
+}
+
+### Get all companies
+GET {{ baseUrl }}/company
+Authorization: Bearer {{ admin_token }}
+
+### Create a new company
+POST {{ baseUrl }}/company
+Content-Type: application/json
+Authorization: Bearer {{ user_token }}
+
+{
+    "company_name": "Company 5",
+    "company_number": "BE0223456759",
+    "office_address": "Rue de la Loi 1, 1000 Bruxelles",
+    "legal_form": "SRL",
+    "website": "www.company1.be",
+    "nace_code": "1234",
+    "business_activity": "Activité 1",
+    "nb_workers": 100,
+    "revenue": 1000000.0,
+    "labels": ["label1", "label2"],
+    "dispute": false
+}
+
+### Get a company
+GET {{ baseUrl }}/company/1
+Authorization: Bearer {{ admin_token }}
+
+### Get company form status
+GET {{ baseUrl }}/company/1/forms/status
+Authorization: Bearer {{ admin_token }}
+
+### Get company form status
+GET {{ baseUrl }}/company/1/forms/status
+Authorization: Bearer {{ user_token }}
+
+### Read a user's company
+GET {{ baseUrl }}/company/user
+Authorization: Bearer {{ user_token }}

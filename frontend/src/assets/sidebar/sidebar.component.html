@@ -1,0 +1,94 @@
+<mat-toolbar
+  color="primary"
+  class="w-100 d-flex justify-content-between align-items-center custom-toolbar"
+>
+  <img
+    src="./assets/images/logo_shiftingpact_verteau_blanc.png"
+    alt="Website Logo"
+    class="logo img-fluid"
+    [routerLink]="['/home']"
+  />
+
+  <div class="d-flex nav-buttons">
+    <button
+      *ngIf="!authService.isTokenValid()"
+      [routerLink]="['/login']"
+      mat-button
+      class="btn btn-outline-light nav-button"
+    >
+      Se connecter
+    </button>
+
+    <button
+    *ngIf="!authService.isTokenValid()"
+    [routerLink]="['/onboarding']"
+    mat-button
+    class="btn btn-outline-light nav-button"
+    >
+    On boarding
+    </button>
+
+    <button
+      *ngIf="authService.isAdmin()"
+      [routerLink]="['/dashboard']"
+      mat-button
+      class="btn btn-outline-light nav-button"
+    >
+      Panneau de gestion
+    </button>
+
+    <button
+    *ngIf="authService.isUser()"
+    [routerLink]="['/companyDashboard']"
+    mat-button
+    class="btn btn-outline-light nav-button"
+    >
+    Questionnaires
+    </button>
+
+    <button
+      *ngIf="authService.isAdmin()"
+      [routerLink]="['/statistics']"
+      mat-button
+      class="btn btn-outline-light nav-button"
+    >
+      Statistiques
+    </button>
+    <button
+      *ngIf="authService.isAdmin()"
+      [routerLink]="['/register']"
+      mat-button
+      class="btn btn-outline-light nav-button"
+    >
+      Inscription
+    </button>
+    <button
+      *ngIf="authService.isAdmin()"
+      [routerLink]="['/score']"
+      mat-button
+      class="btn btn-outline-light nav-button"
+    >
+      Score
+    </button>
+
+    <button
+      *ngIf="authService.isUser()"
+      [routerLink]="['/userRegister']"
+      mat-button
+      class="btn btn-outline-light nav-button"
+    >
+      Inscription
+    </button>
+  </div>
+
+  <span class="spacer"></span>
+  <button
+    *ngIf="authService.isTokenValid()"
+    mat-icon-button
+    matTooltip="Déconnexion"
+    (click)="authService.logout()"
+    [routerLink]="['/']"
+  >
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>

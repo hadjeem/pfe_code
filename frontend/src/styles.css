@@ -1,0 +1,45 @@
+ngx-loading .backdrop {
+    background: rgba(1, 50, 56, 1) !important; /* Full opacity */
+}
+
+/* styles.css */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(8deg, rgba(2, 0, 36, 1) 0%, rgba(1, 50, 56, 1) 35%, rgba(181, 205, 191, 1) 100%) fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.full-height {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1;
+}
+
+body.dark-mode button {
+    background-color: #333;
+    color: #fff;
+}
+
+.custom-toolbar {
+    background-color: #013238 !important; /* Couleur de fond de la navbar */
+    color: #ffffff !important; /* Couleur du texte de la navbar */
+}
+
+.custom-toolbar button {
+    background-color: transparent !important;
+    color: #ffffff !important;
+}
+
+.custom-toolbar mat-icon {
+    color: #ffffff !important;
+}

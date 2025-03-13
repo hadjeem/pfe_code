@@ -1,0 +1,84 @@
+@baseUrl=http://127.0.0.1:3000
+@user_token={{ user.response.body.token }}
+@admin_token={{ admin.response.body.token }}
+
+### Register a new user for a company
+POST {{ baseUrl }}/auth/register
+Content-Type: application/json
+Authorization: Bearer {{ user_token }}
+
+{
+    "firstname": "John",
+    "lastname": "Doe",
+    "login": "John",
+    "password": "password",
+    "role": "user"
+}
+
+### Register a new user with not enough rights
+POST {{ baseUrl }}/auth/register
+Content-Type: application/json
+Authorization: Bearer {{ user_token }}
+
+{
+    "firstname": "John",
+    "lastname": "Doe",
+    "login": "John",
+    "password": "password",
+    "role": "admin"
+}
+
+### Register without company
+POST {{ baseUrl }}/auth/register
+Content-Type: application/json
+Authorization: Bearer {{ admin_token }}
+
+{
+    "firstname": "John",
+    "lastname": "Doe",
+    "login": "azeazeazeae",
+    "password": "password",
+    "role": "admin"
+}
+
+### Login with user account
+# @name user
+POST {{ baseUrl }}/auth/login
+Content-Type: application/json
+
+{
+    "login": "user1@example.com",
+    "password": "password"
+}
+
+### Login with admin account
+# @name admin
+POST {{ baseUrl }}/auth/login
+Content-Type: application/json
+
+{
+    "login": "admin@example.com",
+    "password": "password"
+}
+
+### Verify a token
+GET {{ baseUrl }}/auth/verify
+Authorization: Bearer {{user_token}}
+
+### Login with bad password
+POST {{ baseUrl }}/auth/login
+Content-Type: application/json
+
+{
+    "login": "user@example.com",
+    "password": "badpassword"
+}
+
+### Login with bad login
+POST {{ baseUrl }}/auth/login
+Content-Type: application/json
+
+{
+    "login": "badlogin",
+    "password": "password"
+}
